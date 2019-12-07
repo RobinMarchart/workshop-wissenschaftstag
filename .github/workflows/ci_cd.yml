@@ -18,11 +18,11 @@ jobs:
         root_file: presentation/slides.tex
         args: -xelatex -file-line-error -interaction=nonstopmode
     - name: list
-      run: ls presentation
+      run: ls slides.pdf
     - uses: actions/upload-artifact@v1
       with:
         name: slides.pdf
-        path: presentation/slides.pdf
+        path: slides.pdf
     - name: GitHub Pages Deploy 
       uses: maxheld83/ghpages@v0.2.1
     
