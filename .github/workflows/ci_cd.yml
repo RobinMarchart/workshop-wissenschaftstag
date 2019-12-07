@@ -17,6 +17,8 @@ jobs:
       with:
         root_file: presentation/slides.tex
         args: -xelatex -file-line-error -interaction=nonstopmode
+    - name: list
+      run: pwd;ls;ls presentation
     - uses: actions/upload-artifact@v1
       with:
         name: slides.pdf
