@@ -57,3 +57,5 @@
 
 * [standard](https://robinmarchart.github.io/workshop-wissenschaftstag/slides.pdf)
 * [with notes](https://robinmarchart.github.io/workshop-wissenschaftstag/slides_with_notes.pdf)
+
+dspdfviewer
