@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "main/index.js",
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "scripts": {
     "prepublish": "npm run build",
     "build": "tsc --build tsconfig.json"
