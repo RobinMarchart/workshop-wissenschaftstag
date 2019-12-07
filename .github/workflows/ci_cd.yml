@@ -12,17 +12,20 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Compile LaTeX document
+    - name: Compile slides.tex
       uses: xu-cheng/latex-action@master
       with:
         root_file: presentation/slides.tex
         args: -xelatex -file-line-error -interaction=nonstopmode
-    - name: list
-      run: ls slides.pdf
+    - name: Compile slides_with_notes.tex
+      uses: xu-cheng/latex-action@master
+      with:
+        root_file: presentation/slides_with_notes.tex
+        args: -xelatex -file-line-error -interaction=nonstopmode
     - uses: actions/upload-artifact@v1
       with:
-        name: slides.pdf
-        path: slides.pdf
+        name: slides
+        path: slides.pdf slides_with_notes.pdf
     - name: GitHub Pages Deploy 
       uses: maxheld83/ghpages@v0.2.1
     
