@@ -1,0 +1,54 @@
+name: CI/CD
+
+on: 
+  push:
+    branches-ignore: 
+      - gh-pages
+
+jobs:
+  build-latex:
+    name: Build latex presentation files
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Compile slides.tex
+      uses: xu-cheng/latex-action@master
+      with:
+        root_file: slides.tex
+        args: -xelatex -file-line-error -interaction=nonstopmode
+        working_directory: presentation
+    - name: Compile slides_with_notes.tex
+      uses: xu-cheng/latex-action@master
+      with:
+        root_file: slides_with_notes.tex
+        args: -xelatex -file-line-error -interaction=nonstopmode
+        working_directory: presentation
+    - name: move output
+      run: mkdir slides;cp presentation/slides.pdf slides/;cp presentation/slides_with_notes.pdf slides/
+    - uses: actions/upload-artifact@v1
+      with:
+        name: slides
+        path: slides
+    - name: GH Pages deploy
+      uses: Cecilapp/GitHub-Pages-deploy@2.0.0
+      env:
+        EMAIL: robin.marchart@hotmail.com               
+        GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BUILD_DIR: slides/
+  build-node:
+    name: Build npm package containing the survey server
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 10
+        registry-url: https://npm.pkg.github.com/
+        scope: '@RobinMarchart'
+    - run: cd survey;npm ci
+    - run: cd survey;npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    
+
+      
