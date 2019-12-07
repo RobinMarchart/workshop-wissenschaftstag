@@ -24,10 +24,12 @@ jobs:
         root_file: slides_with_notes.tex
         args: -xelatex -file-line-error -interaction=nonstopmode
         working_directory: presentation
+    - name: move output
+      run: mkdir slides;cp presentation/slides.pdf slides/;cp presentation/slides_with_notes.pdf slides/
     - uses: actions/upload-artifact@v1
       with:
         name: slides
-        path: presentation/slides.pdf presentation/slides_with_notes.pdf
+        path: slides
     - name: GitHub Pages Deploy 
       uses: maxheld83/ghpages@v0.2.1
     
