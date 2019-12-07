@@ -17,11 +17,13 @@ jobs:
       with:
         root_file: presentation/slides.tex
         args: -xelatex -file-line-error -interaction=nonstopmode
+        working_directory: presentation
     - name: Compile slides_with_notes.tex
       uses: xu-cheng/latex-action@master
       with:
         root_file: presentation/slides_with_notes.tex
         args: -xelatex -file-line-error -interaction=nonstopmode
+        working_directory: presentation
     - uses: actions/upload-artifact@v1
       with:
         name: slides
