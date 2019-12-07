@@ -26,8 +26,8 @@ jobs:
         working_directory: presentation
     - uses: actions/upload-artifact@v1
       with:
-        name: presentation/slides
-        path: presentation/slides.pdf slides_with_notes.pdf
+        name: slides
+        path: presentation/slides.pdf presentation/slides_with_notes.pdf
     - name: GitHub Pages Deploy 
       uses: maxheld83/ghpages@v0.2.1
     
