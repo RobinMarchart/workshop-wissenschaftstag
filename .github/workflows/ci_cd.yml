@@ -15,19 +15,19 @@ jobs:
     - name: Compile slides.tex
       uses: xu-cheng/latex-action@master
       with:
-        root_file: presentation/slides.tex
+        root_file: slides.tex
         args: -xelatex -file-line-error -interaction=nonstopmode
         working_directory: presentation
     - name: Compile slides_with_notes.tex
       uses: xu-cheng/latex-action@master
       with:
-        root_file: presentation/slides_with_notes.tex
+        root_file: slides_with_notes.tex
         args: -xelatex -file-line-error -interaction=nonstopmode
         working_directory: presentation
     - uses: actions/upload-artifact@v1
       with:
-        name: slides
-        path: slides.pdf slides_with_notes.pdf
+        name: presentation/slides
+        path: presentation/slides.pdf slides_with_notes.pdf
     - name: GitHub Pages Deploy 
       uses: maxheld83/ghpages@v0.2.1
     
