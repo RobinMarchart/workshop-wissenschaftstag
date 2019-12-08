@@ -46,7 +46,7 @@ jobs:
         registry-url: https://npm.pkg.github.com/
         scope: '@RobinMarchart'
     - run: cd survey;npm ci
-    - run: cd survey;npm version patch
+    - run: cd survey;npm version patch;git status
     - name: GitHub Push
       uses: ad-m/github-push-action@v0.5.0
       with:
