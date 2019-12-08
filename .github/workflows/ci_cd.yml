@@ -46,7 +46,7 @@ jobs:
         registry-url: https://npm.pkg.github.com/
         scope: '@RobinMarchart'
     - run: cd survey;npm ci
-    - run: cd survey;npm publish
+    - run: cd survey;npm publish --tag latest -f
       env:
         NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
     
