@@ -63,7 +63,7 @@ jobs:
     - name: docker login
       run: docker login docker.pkg.github.com --username RobinMarchart --password-stdin <<< "${{ secrets.GITHUB_TOKEN }}"
     - name: build survey container
-      run: docker build .survey_container --tag docker.pkg.github.com/robinmarchart/workshop-wissenschaftstag/survey:latest
+      run: docker build ./survey_container --tag docker.pkg.github.com/robinmarchart/workshop-wissenschaftstag/survey:latest
     - name: publish survey container
       run: docker push docker.pkg.github.com/robinmarchart/workshop-wissenschaftstag/survey:latest
     - name: docker logout
