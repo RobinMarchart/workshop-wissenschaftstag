@@ -46,7 +46,11 @@ jobs:
         registry-url: https://npm.pkg.github.com/
         scope: '@RobinMarchart'
     - run: cd survey;npm ci
-    - run: sd survey;npm version patch
+    - run: cd survey;npm version patch
+    - name: GitHub Push
+      uses: ad-m/github-push-action@v0.5.0
+      with:
+        github_token: ${{secrets.GITHUB_TOKEN}}
     - run: cd survey;npm publish --tag latest -f
       env:
         NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
