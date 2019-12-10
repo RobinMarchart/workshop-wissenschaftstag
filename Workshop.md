@@ -35,23 +35,30 @@
 2. Plots der Datensätze und Teildatensätze
 3. Mean and Standard Deviation
 4. Standard Error (Research)
-5. Chi Squared Test
-6. Paired T-Test (Problem?)
-7. ANOVA with Post Hoc
-8. Resultate vorstellen
+5. ANOVA with Post Hoc
+6. Repeated Measures ANOVA
+7. Resultate vorstellen
+
+## Aufgabenblatt
+
+* Aufgaben
+* Erklärungen
+* Anleitung
+* Kopie der Umfrage bzw Bedeutung der Zahlen in .csv
 
 ## Fragen
 
-* Alter (frei number)
-* Geshlecht (m/w/frei text)
+* Geschlecht (m/w/anderes)
 * Stunden Sport pro Woche (<2, 2-3,>3)
-* Notenschnitt (in 0.5 schritten)
+* Notenschnitt (in 0.5 schritten: 1-1.5;1-5-2;2-2.5;2.5-3;>3)
 * Eltern geschieden (bool)
 * Introvert/Extrovert (bool)
 * Ordentlich Unordentlich (bool)
 * Lebenszufriedenheit (1-5)
 * Zukunft/Vergangenheit
-* Freunde (frei number)
+* Freunde an die man sich wenden kann (immer,manchmal,selten,nie)
+* Zeit vor digitalen Geräten pro Tag (Stunden: <1;1-2,2-3,3-4,>4)
+
 
 ## Slides
 
