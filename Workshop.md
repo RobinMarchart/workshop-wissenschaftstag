@@ -42,10 +42,9 @@
 
 ## Fragen
 
-* Alter (frei number)
-* Geshlecht (m/w/frei text)
+* Geshlecht (m/w/anderes)
 * Stunden Sport pro Woche (<2, 2-3,>3)
-* Notenschnitt (in 0.5 schritten)
+* Notenschnitt (in 0.5 schritten: 1-1.5;1-5-2;2-2.5;2.5-3;>3)
 * Eltern geschieden (bool)
 * Introvert/Extrovert (bool)
 * Ordentlich Unordentlich (bool)
