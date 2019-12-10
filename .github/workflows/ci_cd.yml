@@ -11,6 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+    - uses: "maxheld83/pandoc@v0.1.0"
+      name: convert Workshop.md to latex
+      with:
+          args: "-so Workshop.pdf -t latex Workshop.md"
+    - name: Compile Workshop.tex
+      uses: xu-cheng/latex-action@master
+      with:
+          root_file: Workshop.tex
     - name: Compile slides.tex
       uses: xu-cheng/latex-action@master
       with:
@@ -24,7 +32,7 @@ jobs:
         args: -xelatex -file-line-error -interaction=nonstopmode
         working_directory: presentation
     - name: move output
-      run: mkdir slides;cp presentation/slides.pdf slides/;cp presentation/slides_with_notes.pdf slides/
+      run: mkdir slides;cp presentation/slides.pdf slides/;cp presentation/slides_with_notes.pdf slides/;cp Workshop.pdf slides/
     - uses: actions/upload-artifact@v1
       with:
         name: slides
