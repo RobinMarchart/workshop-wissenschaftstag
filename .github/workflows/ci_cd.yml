@@ -14,7 +14,7 @@ jobs:
     - uses: "maxheld83/pandoc@v0.1.0"
       name: convert Workshop.md to latex
       with:
-          args: "-so Workshop.pdf -t latex Workshop.md"
+          args: "-so Workshop.tex -t latex Workshop.md"
     - name: Compile Workshop.tex
       uses: xu-cheng/latex-action@master
       with:
