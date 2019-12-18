@@ -10,8 +10,9 @@
 * Beamer mit HDMI Kabel (funktionierend)
 * Laptops mit
   * Excel
-  * Python
+  * (Python)
   * JASP
+  * Moderner Browser
 * 64-bit Linux Maschine mit Docker installiert (zumindest Terminal zugriff mit nutzer in sudo oder Docker gruppe und zumindest am anfang internet zugriff)
 * IP-Netzwerk, in dem zumindest die Linux Maschine erreichbar ist
 
@@ -58,7 +59,6 @@
 * Zukunft/Vergangenheit
 * Freunde an die man sich wenden kann (immer,manchmal,selten,nie)
 * Zeit vor digitalen Geräten pro Tag (Stunden: <1;1-2,2-3,3-4,>4)
-
 
 ## Slides
 

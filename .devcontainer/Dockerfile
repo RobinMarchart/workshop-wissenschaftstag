@@ -21,7 +21,7 @@ RUN apt-get update \
     #
     # Verify git and needed tools are installed
     && apt-get -y install git iproute2 procps \
-    && apt-get -y install texlive-full \
+    && apt-get -y install --no-install-recommends texlive-full  \
     #
     # Remove outdated yarn from /opt and install via package 
     # so it can be easily updated via apt-get upgrade yarn
