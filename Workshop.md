@@ -19,6 +19,7 @@
 
 * Fragen für Umfrage (Hanna)
 * Umfrage (Robin)
+* Ipads oder Computerräume organisieren (GESTERN -> Mack)
 
 ## Ablauf
 
