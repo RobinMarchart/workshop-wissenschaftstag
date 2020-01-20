@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Auswertung einer kursinternen Umfrage";
+}
+
+<div id="root">
+
+    @if (survey.Startup.development){
+        <script src="localhost:8080/main.js"></script>
+    }else{
+        <script src="@Url.Content("~/wwwroot/main.js")"></script>
+    }
+    
+</div>
+
