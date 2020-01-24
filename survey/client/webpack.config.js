@@ -1,14 +1,15 @@
 const path = require('path');
 
 module.exports = {
-    entry: './src/index.ts',
+    entry: './src/index.tsx',
     output: {
         filename: 'main.js',
         path: path.resolve(__dirname, '../wwwroot'),
+        publicPath:"/"
     },
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: './dist',
+        contentBase: './pub',
     },
     module: {
         rules: [

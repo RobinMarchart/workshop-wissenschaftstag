@@ -61,6 +61,6 @@
 		"james-yu.latex-workshop",
 		"tecosaur.latex-utilities"
 	],
-	"appPort": ["5000:5000","8080:8080"],
+	"appPort": ["5000:5000","3000:3000"],
 	"mounts": ["source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"]
 }

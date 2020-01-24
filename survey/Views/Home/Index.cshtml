@@ -3,9 +3,9 @@
 }
 
 <div id="root">
-
+    <script>initialState=0</script>
     @if (survey.Startup.development){
-        <script src="localhost:8080/main.js"></script>
+        <script src="localhost:3000/main.js"></script>
     }else{
         <script src="@Url.Content("~/wwwroot/main.js")"></script>
     }
