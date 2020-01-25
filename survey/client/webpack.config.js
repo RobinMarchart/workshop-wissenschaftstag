@@ -7,9 +7,11 @@ module.exports = {
         path: path.resolve(__dirname, '../wwwroot'),
         publicPath: "/"
     },
+    resolve:{
+        extensions: ['.ts', '.tsx', '.js', ".jsx"]
+    },
     devtool: 'inline-source-map',
     devServer: {
-        host: '0.0.0.0',
         port: 3000,
         disableHostCheck: true,
     },
