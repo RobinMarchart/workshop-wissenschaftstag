@@ -4,5 +4,14 @@
         "Engine"
     ],
     "eslint.packageManager": "yarn",
-    "eslint.workingDirectories": ["survey/client"]
+    "eslint.workingDirectories": [
+        "survey/client"
+    ],
+    "javascript.format.semicolons": "insert",
+    "javascript.referencesCodeLens.enabled": true,
+    "javascript.suggest.autoImports": false,
+    "typescript.disableAutomaticTypeAcquisition": true,
+    "javascript.validate.enable": false,
+    "typescript.reportStyleChecksAsWarnings": false,
+    "typescript.validate.enable": false
 }
