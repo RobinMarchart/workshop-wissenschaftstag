@@ -4,7 +4,6 @@ import ReactDOM from "react-dom";
 
 declare const initialState:number;
 
-const AppList:React.Component<{}>[]=[]
 
 class App extends React.Component<{},{currState:number}>{
 
@@ -15,8 +14,7 @@ class App extends React.Component<{},{currState:number}>{
         this.state={currState:currState}
     }
     render(){
-        return AppList[this.state.currState]
+        return <div>lol</div>
     }
 }
-alert("lol");
 ReactDOM.render(<App></App>,document.getElementById("root"));

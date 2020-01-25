@@ -5,11 +5,13 @@ module.exports = {
     output: {
         filename: 'main.js',
         path: path.resolve(__dirname, '../wwwroot'),
-        publicPath:"/"
+        publicPath: "/"
     },
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: './pub',
+        host: '0.0.0.0',
+        port: 3000,
+        disableHostCheck: true,
     },
     module: {
         rules: [
