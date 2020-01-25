@@ -1,9 +1,12 @@
 const path = require('path');
 
 module.exports = {
-    entry: './src/index.tsx',
+    entry: {
+        main:'./src/index.tsx',
+        admin:'./src/admin.tsx'
+    },
     output: {
-        filename: 'main.js',
+        filename: '[name].js',
         path: path.resolve(__dirname, '../wwwroot'),
         publicPath: "/"
     },

@@ -8,9 +8,9 @@ import {Content,questions} from "./Content"
 
 //declare const initialState:number;
 
-async function getConfig():Promise<questions>{
+async function getConfig(): Promise<questions>{
     let repeat=true
-    let response:any=null
+    let response: any=null
     while(repeat){
         try{
             response=JSON.parse(await axios);
@@ -23,15 +23,15 @@ async function getConfig():Promise<questions>{
     return response
 }
 
-class App extends React.Component<{},{currState:number}>{
+class App extends React.Component<{},{currState: number}>{
 
-    constructor(props:{}){
+    constructor(props: {}){
         super(props);
     }
-    render(){
+    render(): React.Component{
         return <Container>
             <PromiseComponent<questions> promise={getConfig()}
-            loading={()=><div className="loading">Loading</div>}
+            loading={(): React.Component=><div className="loading">Loading</div>}
             resolved={Content}
             error={DefaultErrorHandler}>
             </PromiseComponent>

@@ -9,15 +9,15 @@ using survey.Models;
 
 namespace survey.Controllers
 {
-    public class HomeController : Controller
+    public class SurveyController : Controller
     {
 
         private List<List<String>> questions=null;
         private int participants=0;
 
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<SurveyController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public SurveyController(ILogger<SurveyController> logger)
         {
             _logger = logger;
         }

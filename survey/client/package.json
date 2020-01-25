@@ -33,7 +33,7 @@
     "xml-loader": "^1.2.1"
   },
   "scripts": {
-    "start": "webpack-dev-server --mode development --hot --disable-host-check",
+    "start": "webpack-dev-server --host 0.0.0.0 --mode development --hot --disable-host-check",
     "build": "webpack --mode production"
   },
   "browserslist": "> 0.25%, not dead"

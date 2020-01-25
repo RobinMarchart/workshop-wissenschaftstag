@@ -1,34 +1,34 @@
 import React from "react"
 
-export function DefaultErrorHandler(error:any){
+export function DefaultErrorHandler(error: any): React.Component{
     console.error(error);
     return <div>Some kind of error occurred</div>
 }
 
 export class PromiseComponent<T> extends React.Component<
-    { promise: Promise<T>, loading: React.ComponentType, resolved: React.ComponentType<{ data: T }>, error: React.ComponentType<{ error: any }> },
-    { notWaiting: boolean, state: string, result: T | undefined, error: any | undefined }>{
+    { promise: Promise<T>; loading: React.ComponentType; resolved: React.ComponentType<{ data: T }>; error: React.ComponentType<{ error: any }> },
+    { notWaiting: boolean; state: string; result: T | undefined; error: any | undefined }>{
 
-    constructor(prop: { promise: Promise<T>, loading: React.ComponentType, resolved: React.ComponentType<{ data: T }>, error: React.ComponentType<{ error: any }> }) {
+    constructor(prop: { promise: Promise<T>; loading: React.ComponentType; resolved: React.ComponentType<{ data: T }>; error: React.ComponentType<{ error: any }> }) {
         super(prop)
         this.state = { notWaiting: true, state: "unresolved", result: undefined, error: undefined }
     }
 
-    handleReject(error: any) {
+    handleReject(error: any): void {
         this.setState({ state: "rejected", error: error });
     }
 
-    handleResolve(data: T) {
+    handleResolve(data: T): void {
         this.setState({ state: "resolved", result: data });
     }
 
-    waitOnPromise() {
+    waitOnPromise(): void {
 
         this.props.promise.then(this.handleResolve.bind(this), this.handleReject.bind(this));
         this.setState({ notWaiting: false });
     }
 
-    render() {
+    render(): React.Component {
         if (this.state.notWaiting) {
             window.setTimeout(this.waitOnPromise.bind(this))
         }
