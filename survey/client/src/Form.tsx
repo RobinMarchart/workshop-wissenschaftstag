@@ -15,7 +15,7 @@ class FormSelect extends React.Component<{ options: questionOptions }, { unselec
     handleOnChange(e): void {
         if (this.state.unselected) this.setState({ unselected: false });
         const select= e.target as HTMLSelectElement;
-        this.value=Number.parseInt(select.options[select.selectedIndex].value)
+        this.value=select.selectedIndex;
     }
 
     render(): React.Component {
@@ -63,7 +63,7 @@ export default class QuestionsForm extends React.Component<{questions: questions
     render(): React.Component{
         return <Form>
             {this.props.questions.map((x,y)=><QuestionForm question={x} key={y.toString()} ref={(x): void => this.children.set(y,x)}></QuestionForm>)}
-            <Button variant="primary" type="submit" onClick={(x): void=>{
+            <Button variant="outline-primary" type="submit" onClick={(x): void=>{
                 x.preventDefault();
                 const curr=this.props.questions.map((x,y) => this.children.get(y))
                 if(curr.every(x=>typeof x !== "undefined"&&(x as QuestionForm).read()>=0)){

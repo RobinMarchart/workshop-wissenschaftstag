@@ -26,38 +26,38 @@ namespace survey.Types
 
     }
 
-    public struct AdminSettingsRequest
+    public class AdminSettingsRequest
     {
         public int participants { get; set; }
         public List<Question> questions { get; set; }
     }
 
-    public struct RegisterRequest
+    public class RegisterRequest
     {
         public int participants {get; set;}
     }
 
-    public struct RegisterResponse{
+    public class RegisterResponse{
         public List<int> ids {get; set;}
         public List<Question> questions { get; set; }
     }
 
-    public struct WritablePair<T1,T2>{
+    public class WritablePair<T1,T2>{
         public T1 first {get;set;}
         public T2 second {get;set;}
     }
 
-    public struct Question{
+    public class Question{
         public String descr {get; set;}
         public List<String> options {get;set;}
     }
 
-    public struct AnswerRequest{
+    public class AnswerRequest{
         public int id {get; set;}
         public List<int> answers {get;set;}
     }
 
-    public struct StatusResponse{
+    public class StatusResponse{
         public int all {get;set;}
         public int curr {get;set;}
     }

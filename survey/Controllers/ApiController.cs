@@ -32,8 +32,7 @@ namespace survey.Controllers{
         }
 
         public async Task<IActionResult> Result(){
-            string result=await GlobalState.globalState.results;
-            return File(Encoding.UTF8.GetBytes(result,0,result.Count()),"application/octet-stream");
+            return Content(await GlobalState.globalState.results,"text/csv");
         }
 
         public async Task<IActionResult> Status(){
@@ -90,6 +89,7 @@ namespace survey.Controllers{
             GlobalState.globalState.answers=new List<WritablePair<List<int>, SemaphoreSlim>>();
             for (int x=0;x<request.participants;x++) GlobalState.globalState.answers.Add(new WritablePair<List<int>, SemaphoreSlim>(){first=null,second=new SemaphoreSlim(1)});
             GlobalState.globalState.initialized.Release();
+            Console.Out.WriteLine("Configuration added");
             return Ok();
         }
     }
