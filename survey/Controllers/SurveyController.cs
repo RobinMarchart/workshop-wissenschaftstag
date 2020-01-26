@@ -13,7 +13,6 @@ namespace survey.Controllers
     {
 
         private List<List<String>> questions=null;
-        private int participants=0;
 
         private readonly ILogger<SurveyController> _logger;
 

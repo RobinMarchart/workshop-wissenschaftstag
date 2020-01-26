@@ -14,7 +14,10 @@ export default class AdminSetup extends React.Component<{configured: () => null}
         console.log(response);
         const res=await fetch("/Api/SetConfig",{
             method:"PUT",
-            body:JSON.stringify(response)
+            body:JSON.stringify(response),
+            headers: {
+                'Content-Type':'application/json'
+            }
         });
         if(!res.ok)throw new Error(res.statusText);
         console.log(res);
@@ -25,11 +28,11 @@ export default class AdminSetup extends React.Component<{configured: () => null}
         return <Form>
             <Form.Group>
                 <Form.Label>Bitte Fragen hochladen</Form.Label>
-                <Form.Control type="file" onChange={(e): void => this.files=e.target.files}></Form.Control>
+                <input className="form-control-file" type="file" accept=".json" onChange={(e): void => this.files=e.target.files}></input>
             </Form.Group>
             <Form.Group>
                 <Form.Label>Anzahl Teilnehmer</Form.Label>
-                <input className="form-control-file" type="number" onChange={(e): void => this.participants=e.target.valueAsNumber} accept=".json"></input>
+                <Form.Control type="number" min="1" onChange={(e): void => this.participants=e.target.valueAsNumber}></Form.Control>
             </Form.Group>
             <Button variant="primary" type="submit" onClick={(x): void=>{
                 x.preventDefault();
