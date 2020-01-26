@@ -25,7 +25,7 @@ export class QuestionsInit extends React.Component<{initialized: (init: Promise<
         return <Jumbotron>
             <h1>Auswertung einer kursinternen Umfrage</h1>
             <p>Erklärungs-text</p>
-            <p>
+            
                 <Form>
                     <Form.Group>
                         <Form.Label>
@@ -37,12 +37,12 @@ export class QuestionsInit extends React.Component<{initialized: (init: Promise<
                     </Form.Group>
                     <Button type="submit" variant="outline-primary" onClick={(e): void=>{
                         e.preventDefault();
-                        this.state.initialized(this.sendInit());
+                        this.props.initialized(this.sendInit());
                     }}>
                         Weiter
                     </Button>
                 </Form>
-            </p>
+            
         </Jumbotron>
     }
 }

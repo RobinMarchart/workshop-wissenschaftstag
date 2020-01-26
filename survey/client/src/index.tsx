@@ -54,7 +54,7 @@ class App extends React.Component<{},{currState: number;config: Promise<Question
 
     constructor(props: {}){
         super(props);
-        this.state={currState:this.readState()}
+        this.state={currState:this.readCurrState()}
     }
     renderCurrState(): React.Component{
         switch (this.state.currState){

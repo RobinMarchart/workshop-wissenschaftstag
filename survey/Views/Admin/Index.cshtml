@@ -5,7 +5,7 @@
 <div id="root">
     <script>initialState=0</script>
     @if (survey.Startup.development){
-        <script src="http://localhost:3000/admin.js"></script>
+        <script src="http://localhost:3000/admin.js" crossorigin></script>
     }else{
         <script src="@Url.Content("~/wwwroot/admin.js")"></script>
     }

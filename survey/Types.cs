@@ -1,8 +1,26 @@
 using System;
+using System.Threading;
 using System.Collections.Generic;
 
 namespace survey.Types
 {
+
+
+    public class GlobalState{
+        public int participants=0;
+
+        public SemaphoreSlim initialized=new SemaphoreSlim(0);
+
+        public WritablePair<int,SemaphoreSlim> participantsIdCounter=new WritablePair<int, SemaphoreSlim>(){first=0,second=new SemaphoreSlim(1)};
+
+        public List<List<String>> questions;
+
+        public List<WritablePair<List<int>,SemaphoreSlim>> answers;
+
+        public static GlobalState globalState=new GlobalState();
+
+    }
+
     public class AdminSettingsRequest
     {
         public int participants { get; set; }

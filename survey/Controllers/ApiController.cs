@@ -11,15 +11,7 @@ using survey.Types;
 
 namespace survey.Controllers{
 
-    public class ApiController :Controller
-    {
-        private int participants=0;
-
-        private WritablePair<int,SemaphoreSlim> participantsIdCounter=new WritablePair<int, SemaphoreSlim>(){first=0,second=new SemaphoreSlim(1)};
-
-        private List<List<String>> questions;
-
-        private List<WritablePair<List<int>,SemaphoreSlim>> answers;
+    public class ApiController :Controller{
         private readonly ILogger<SurveyController> _logger;
 
         public ApiController(ILogger<SurveyController> logger)
@@ -32,27 +24,30 @@ namespace survey.Controllers{
         public async Task<IActionResult> Register(){
             RegisterRequest request=await JsonSerializer.DeserializeAsync<RegisterRequest>(Request.BodyReader.AsStream());
             if(request.participants<1)return StatusCode(400);
-            await participantsIdCounter.second.WaitAsync();
-            if(participantsIdCounter.first+request.participants>participants){
-                participantsIdCounter.second.Release();
+            await GlobalState.globalState.initialized.WaitAsync();
+            GlobalState.globalState.initialized.Release();
+            await GlobalState.globalState.participantsIdCounter.second.WaitAsync();
+            if(GlobalState.globalState.participantsIdCounter.first+request.participants>GlobalState.globalState.participants){
+                GlobalState.globalState.participantsIdCounter.second.Release();
                 return StatusCode(409);
             }
             var ids=new List<int>();
-            for (int x=0;x<request.participants;x++)ids.Add(participantsIdCounter.first++);
-            participantsIdCounter.second.Release();
-            return Json(new RegisterResponse(){ids=ids,questions=questions});
+            for (int x=0;x<request.participants;x++)ids.Add(GlobalState.globalState.participantsIdCounter.first++);
+            GlobalState.globalState.participantsIdCounter.second.Release();
+            return Json(new RegisterResponse(){ids=ids,questions=GlobalState.globalState.questions});
         }
 
         [HttpPut]
         [Consumes("application/json")]        
         public async Task<IActionResult> SetConfig(){
             AdminSettingsRequest request=await JsonSerializer.DeserializeAsync<AdminSettingsRequest>(Request.BodyReader.AsStream());
-            if(participants!=0)return StatusCode(409);
+            if(GlobalState.globalState.participants!=0)return StatusCode(409);
             if(request.participants<1 || request.questions==null)return StatusCode(400);
-            participants=request.participants;
-            questions=request.questions;
-            answers=new List<WritablePair<List<int>, SemaphoreSlim>>();
-            for (int x=0;x<request.participants;x++) answers.Add(new WritablePair<List<int>, SemaphoreSlim>(){first=null,second=new SemaphoreSlim(1)});
+            GlobalState.globalState.participants=request.participants;
+            GlobalState.globalState.questions=request.questions;
+            GlobalState.globalState.answers=new List<WritablePair<List<int>, SemaphoreSlim>>();
+            for (int x=0;x<request.participants;x++) GlobalState.globalState.answers.Add(new WritablePair<List<int>, SemaphoreSlim>(){first=null,second=new SemaphoreSlim(1)});
+            GlobalState.globalState.initialized.Release();
             return Ok();
         }
     }
