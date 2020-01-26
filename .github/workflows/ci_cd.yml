@@ -37,47 +37,26 @@ jobs:
       with:
         name: slides
         path: slides
-  build-node:
-    name: Build npm package containing the survey server
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - uses: actions/setup-node@v1
-      with:
-        node-version: 12
-        registry-url: https://npm.pkg.github.com/
-        scope: '@RobinMarchart'
-    - run: cd survey;npm ci
-    - run: cd survey;npm version patch;git config user.email "robin.marchart@hotmail.com";git config user.name "version bumper";git commit -am "increasing patch version"
-    - name: GitHub Push
-      uses: ad-m/github-push-action@v0.5.0
-      with:
-        github_token: ${{secrets.GITHUB_TOKEN}}
-    - run: cd survey;npm publish --tag latest -f
-      name: deploy to packages
-      env:
-        NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-    - name: build package
-      run: cd survey;npm pack
-  build-container:
+  build-survey:
     name: Build survey docker container
     runs-on: ubuntu-latest
-    needs: build-node
     steps:
     - uses: actions/checkout@v1
     - name: docker login
-      run: docker login docker.pkg.github.com --username RobinMarchart --password-stdin <<< "${{ secrets.GITHUB_TOKEN }}";docker login --username robinmarchart --password-stdin <<< "${{ secrets.DOCKER_HUB }}"
+      run: docker login docker.pkg.github.com --username RobinMarchart --password-stdin <<< "${{ secrets.GITHUB_TOKEN }}" && docker login --username robinmarchart --password-stdin <<< "${{ secrets.DOCKER_HUB }}"
     - name: build survey container
-      run: docker build . -f ./survey_container/Dockerfile --tag robinmarchart/workshop:latest; docker tag robinmarchart/workshop:latest docker.pkg.github.com/robinmarchart/workshop-wissenschaftstag/survey:latest
+      run: docker build . -f ./survey/Dockerfile --tag robinmarchart/workshop:latest && docker tag robinmarchart/workshop:latest docker.pkg.github.com/robinmarchart/workshop-wissenschaftstag/survey:latest
+    - name: rudimentary container test - run 60 seconds
+      run: timeout 60 docker run --rm robinmarchart/workshop:latest
     - name: publish survey container
-      run: docker push robinmarchart/workshop:latest;docker push docker.pkg.github.com/robinmarchart/workshop-wissenschaftstag/survey:latest
+      run: docker push robinmarchart/workshop:latest && docker push docker.pkg.github.com/robinmarchart/workshop-wissenschaftstag/survey:latest
     - name: docker logout
       run: docker logout
       if: always()
   deploy-pages:
     name: Publish Gh-Pages
     runs-on: ubuntu-latest
-    needs: [build-node, build-latex]
+    needs: [build-latex]
     steps:
       - uses: actions/checkout@v1
       - name: GH Pages deploy
