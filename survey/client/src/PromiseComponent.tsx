@@ -15,13 +15,13 @@ export class PromiseComponent<T> extends React.Component<
     }
 
     handleReject(error: any): void {
-        this.setState({ state: "rejected", error: error });
         if (typeof this.props.errorHandler !== "undefined") this.props.errorHandler(error);
+        this.setState({ state: "rejected", error: error });
     }
 
     handleResolve(data: T): void {
-        this.setState({ state: "resolved", result: data });
         if (typeof this.props.succsessHandler !== "undefined") this.props.succsessHandler(data);
+        this.setState({ state: "resolved", result: data });
     }
 
     waitOnPromise(): void {

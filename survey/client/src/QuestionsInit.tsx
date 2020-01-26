@@ -1,8 +1,7 @@
 import React from "react";
 import {Form,Button,Jumbotron} from "react-bootstrap"
-import {questions} from "./Content"
 
-export type QuestionConfig={ids: number[]; questions: questions};
+import {QuestionConfig} from "./types"
 
 export class QuestionsInit extends React.Component<{initialized: (init: Promise<QuestionConfig>) => null}>{
 

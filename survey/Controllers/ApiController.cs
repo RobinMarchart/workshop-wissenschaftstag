@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Text;
 using System.Text.Json;
 using survey.Types;
 
@@ -17,6 +18,47 @@ namespace survey.Controllers{
         public ApiController(ILogger<SurveyController> logger)
         {
             _logger = logger;
+        }
+
+        [NonAction]
+        String GenerateResults(){
+            //Close accepting answers
+            GlobalState.globalState.answers.ForEach(x=>x.second.Wait());
+            Func<IEnumerable<String>,String> toLine=x=>x.Aggregate((x,y)=>x+';'+y)+"\n";
+            String csv =toLine(new String[] {"Item"}.Concat(Enumerable.Range(1,GlobalState.globalState.questions.Count).Select(x=>x.ToString())));
+            csv+=GlobalState.globalState.answers.Select((x,y)=>new String[]{(y+1).ToString()}.Concat(x.first.Select(x=>x.ToString()))).Select(toLine).Aggregate((x,y)=>x+y);
+            GlobalState.globalState.answers.ForEach(x=>x.second.Release());
+            return csv;
+        }
+
+        public async Task<IActionResult> Result(){
+            string result=await GlobalState.globalState.results;
+            return File(Encoding.UTF8.GetBytes(result,0,result.Count()),"application/octet-stream");
+        }
+
+        public async Task<IActionResult> Status(){
+            await GlobalState.globalState.initialized.WaitAsync();
+            GlobalState.globalState.initialized.Release();
+            return Json(new StatusResponse(){all=GlobalState.globalState.participants,curr=GlobalState.globalState.answersGiven});
+        }
+
+        [HttpPut]
+        [Consumes("application/json")] 
+        public async Task<IActionResult> Answer(){
+            AnswerRequest request= await JsonSerializer.DeserializeAsync<AnswerRequest>(Request.BodyReader.AsStream());
+            var user=GlobalState.globalState.answers[request.id];
+            await user.second.WaitAsync();
+            bool finished=false;
+            if(user.first==null){
+                var count=Interlocked.Increment(ref GlobalState.globalState.answersGiven);
+                if (count>=GlobalState.globalState.participants)finished=true;
+            }
+            user.first=request.answers;
+            user.second.Release();
+            
+            if(finished)GlobalState.globalState.results=Task.Run(GenerateResults);
+
+            return Ok();
         }
 
         [HttpPost]

@@ -1,7 +1,11 @@
 [
-    [
+    {
+        "options":[
         "Dave",
         "A.R.S.C.H",
         "Kapitän Kapitanöse"
-    ]
+    ],
+    "descr":"STAR STAR SPACE CHARACTER"
+    }
+    
 ]
