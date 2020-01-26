@@ -1,16 +1,27 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {Container} from "react-bootstrap"
-import axios from "axios";
+import {Container} from "react-bootstrap";
+import AdminSetup from "./AdminSetup";
 
-class App extends React.Component{
+import "./main.css"
+
+class App extends React.Component<{},{state: number}>{
 
     constructor(props){
         super(props);
+        this.state={state:0};
+    }
+
+    renderChild(): React.Component{
+        switch(this.state.state){
+            case 0:return <AdminSetup configured={(): null=>this.setState({state:1})}></AdminSetup>
+        }
     }
 
     render(): React.Component{
-        return <Container></Container>
+        return <Container>
+            {this.renderChild()}
+        </Container>
     }
 }
 

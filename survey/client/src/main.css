@@ -1,0 +1,11 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
+#root{
+    margin-top: 3em;
+}
+
+.form-group{
+    box-shadow: 0 0 0 4px rgb(209, 209, 209);
+    border-radius: 4px;
+    padding: 3px;
+}

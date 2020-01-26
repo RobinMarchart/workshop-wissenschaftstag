@@ -3,8 +3,9 @@ import ReactDOM from "react-dom";
 import {Container} from "react-bootstrap"
 import axios from "axios";
 import {PromiseComponent,DefaultErrorHandler} from "./PromiseComponent"
-
 import {Content,questions} from "./Content"
+
+import "./main.css"
 
 //declare const initialState:number;
 
