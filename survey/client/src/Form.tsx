@@ -1,8 +1,8 @@
 import React from "react";
 import { Form } from "react-bootstrap"
 
-class FormSelect extends React.Component<{ options: string[], label: string, Ref: (arg0:any)=>void }, { unselected: boolean }>{
-    constructor(props: { options: string[], label: string, Ref: (arg0:any)=>void }) {
+class FormSelect extends React.Component<{ options: string[]; label: string; Ref: (arg0: any) => void }, { unselected: boolean }>{
+    constructor(props: { options: string[]; label: string; Ref: (arg0: any) => void }) {
         super(props);
         this.state = { unselected: true };
     }

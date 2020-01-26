@@ -15,6 +15,7 @@ class ContentWrapper extends React.Component<{rejected: () => null; promise: Pro
         super(props);
         const saved=window.localStorage.getItem("conf");
         this.usingPromise=saved==null
+        if(this.usingPromise&&typeof this.props.promise==="undefined")this.props.rejected();
     }
 
     setConfig(conf: QuestionConfig): void{
@@ -44,7 +45,7 @@ class App extends React.Component<{},{currState: number;config: Promise<Question
 
     setCurrState(st: number): void{
         window.localStorage.setItem("status",st.toFixed(0));
-        this.setState()
+        this.setState({currState:st})
     }
 
     initHook(init: Promise<QuestionConfig>): void{
