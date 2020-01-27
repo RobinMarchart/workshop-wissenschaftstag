@@ -1,5 +1,5 @@
 import React from "react";
-import { Jumbotron, ProgressBar } from "react-bootstrap";
+import { Jumbotron, ProgressBar, Button } from "react-bootstrap";
 
 import { statusResponse } from "./types";
 
@@ -13,7 +13,17 @@ function Waiting(props: { status: statusResponse | undefined }): React.Component
 
 function Download(): React.Component{
     return <Jumbotron>
-        <h1><a href="/Api/Result" download="umfrage.csv">Download</a></h1>
+        <h1></h1>
+        <p>
+            <Button variant="outline-primary" href="/Api/Result" download="umfrage.csv">Download</Button>
+        </p>
+        
+        <Button variant="outline-secondary" onClick={(): void=>{
+            window.localStorage.removeItem("status")
+            window.localStorage.removeItem("conf")
+            window.localStorage.removeItem("formnum")
+            window.location.reload()
+        }}>Reset</Button>
     </Jumbotron>
 }
 
