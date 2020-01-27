@@ -18,7 +18,7 @@ export default class DarkMode extends React.Component<{}, { enabled: boolean }>{
     getDarkMode(): boolean {
         const saved = window.localStorage.getItem("darkmode");
         if (saved) return JSON.parse(saved).darkmode;
-        else return false;
+        else return true;
     }
     constructor(props) {
         super(props);
