@@ -7,6 +7,7 @@ import {QuestionsInit} from "./QuestionsInit"
 
 import {QuestionConfig} from "./types"
 import Result from "./Result";
+import DarkMode from "./DarkMode";
 
 import "./main.css"
 
@@ -70,6 +71,7 @@ class App extends React.Component<{},{currState: number;config: Promise<Question
     render(): React.Component{
         return <Container>
             {this.renderCurrState()}
+            <DarkMode></DarkMode>
         </Container>
     }
 }

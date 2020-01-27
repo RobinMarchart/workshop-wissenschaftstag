@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import {Container} from "react-bootstrap";
 import AdminSetup from "./AdminSetup";
 import Result from "./Result";
+import DarkMode from "./DarkMode";
 
 import "./main.css"
 
@@ -23,6 +24,7 @@ class App extends React.Component<{},{state: number}>{
     render(): React.Component{
         return <Container>
             {this.renderChild()}
+            <DarkMode></DarkMode>
         </Container>
     }
 }

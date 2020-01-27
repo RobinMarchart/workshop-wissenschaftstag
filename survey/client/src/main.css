@@ -14,3 +14,12 @@
     display: flex;
     justify-content: space-between;
 }
+
+.darkSwitch{
+    display: flex;
+    justify-content: start;
+}
+
+.darkSwitch>span{
+    margin-right: 5px;
+}

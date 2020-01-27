@@ -1943,6 +1943,13 @@ cyclist@^1.0.1:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
+darkreader@^4.7.15:
+  version "4.7.15"
+  resolved "https://registry.yarnpkg.com/darkreader/-/darkreader-4.7.15.tgz#f40b78379fb48db88d385bafb658c4dd3d8524d6"
+  integrity sha512-i9OzIGJqmbghZ42MI0pHD9hIlEu5LDfOP5TWAg+OyZoO0XsW0D2HoFdCebS4OLRrEr3/TflzDYvUMVnosWR4uA==
+  dependencies:
+    malevic "0.16.3"
+
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
@@ -3611,6 +3618,11 @@ make-dir@^2.0.0:
     pify "^4.0.1"
     semver "^5.6.0"
 
+malevic@0.16.3:
+  version "0.16.3"
+  resolved "https://registry.yarnpkg.com/malevic/-/malevic-0.16.3.tgz#acf1bfef2dbcca4789295cf1f33629794f3fb95c"
+  integrity sha512-/ekZOKILDitU6igF0zxkuTNLQgNTTs+NafyQ19RXwT+VKN9K3qTngQ+TdqcaZJbhSzRqVIXBw6iso6WV56QlhQ==
+
 mamacro@^0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/mamacro/-/mamacro-0.0.3.tgz#ad2c9576197c9f1abf308d0787865bd975a3f3e4"
@@ -4590,6 +4602,13 @@ react-overlays@^2.1.0:
     prop-types "^15.7.2"
     uncontrollable "^7.0.0"
     warning "^4.0.3"
+
+react-switch@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/react-switch/-/react-switch-5.0.1.tgz#449277f4c3aed5286fffd0f50d5cbc2a23330406"
+  integrity sha512-Pa5kvqRfX85QUCK1Jv0rxyeElbC3aNpCP5hV0LoJpU/Y6kydf0t4kRriQ6ZYA4kxWwAYk/cH51T4/sPzV9mCgQ==
+  dependencies:
+    prop-types "^15.6.2"
 
 react-transition-group@^4.0.0:
   version "4.3.0"
