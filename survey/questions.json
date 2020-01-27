@@ -1,11 +1,156 @@
 [
+    
     {
+        "descr":"Wie würdest du deine generelle Lebenszufriedenheit beschreiben?",
         "options":[
-        "Dave",
-        "A.R.S.C.H",
-        "Kapitän Kapitanöse"
-    ],
-    "descr":"STAR STAR SPACE CHARACTER"
+            "sehr zufrieden",
+            "zufrieden",
+            "okay",
+            "geht so",
+            "unzufrieden"
+        ]
+    },
+    {
+        "descr":"In welchem Bereich liegt dein derzeitiger/letzter Notendurchschnitt?",
+        "options":[
+            "1.0-1.5",
+            "1.5-2.0",
+            "2.0-2.5",
+            "2.5-3.0",
+            ">3"
+        ]
+    },
+    {
+        "descr":"Geschlecht",
+        "options":[
+            "männlich",
+            "weiblich"
+        ]
+    },
+    {
+        "descr":"Wie viele Stunden Sport treibst du pro Woche?",
+        "options":[
+            "<2",
+            "2-3",
+            ">3"
+        ]
+    },
+    {
+        "descr":"Sind deine Eltern geschieden?",
+        "options":[
+            "ja",
+            "nein"
+        ]
+    },
+    {
+        "descr":"Bist du eher introvertiert oder extrovertiert?",
+        "options":[
+            "introvertiert",
+            "extrovertiert"
+        ]
+    },
+    {
+        "descr":"Bist du eher ordentlich/organisiert oder unordentlich/unorganisiert?",
+        "options":[
+            "ordentlich",
+            "unordentlich"
+        ]
+    },
+    {
+        "descr":"Denkst du eher an die Zukunft/machst Pläne oder hängst in der Vergangenheit?",
+        "options":[
+            "Zukunft",
+            "Vergangenheit"
+        ]
+    },
+    {
+        "descr":"Hast du Freunde/Menschen, an die du dich bei Problemen wenden kannst?",
+        "options":[
+            "immer",
+            "manchmal",
+            "selten",
+            "nie"
+        ]
+    },
+    {
+        "descr":"Wie viel Zeit verbringst du am Tag vor digitalen Geräten (Handy, Fernseher, Computer)?",
+        "options":[
+            "<1",
+            "1-2",
+            "2-3",
+            ">4"
+        ]
+    },
+    {
+        "descr":"Hast du deiner Meinung nach genug Geld zu Verfügung?",
+        "options":[
+            "ja",
+            "nein"
+        ]
+    },
+    {
+        "descr":"Verbringst du viel Zeit in der Natur?",
+        "options":[
+            "ja",
+            "nein"
+        ]
+    },
+    {
+        "descr":"Wie viel Freizeit steht dir zu Verfügung?",
+        "options":[
+            "viel","genug","wenig","keine"
+        ]
+    },
+    {
+        "descr":"Würdest du dich als selbstständig bezeichnen?",
+        "options":[
+            "ja",
+            "nein"
+        ]
+    },
+    {
+        "descr":"Denkst du bei Entscheidungen zuerst an dich?",
+        "options":[
+            "ja",
+            "nein"
+        ]
+    },
+    {
+        "descr":"Liest du regelmäßig Bücher?",
+        "options":[
+            "ja",
+            "nein"
+        ]
+    },
+    {
+        "descr":"Hast du ein künstlerisches Hobby / arbeitest häufig mit deinen Händen?",
+        "options":[
+            "ja",
+            "nein"
+        ]
+    },
+    {
+        "descr":"Würdest du dich als einen \"Genießer\" bezeichnen?",
+        "options":[
+            "ja",
+            "nein"
+        ]
+    },
+    {
+        "descr":"Wirst du bei deinen Zielen und Vorhaben von Anderen unterstützt?",
+        "options":[
+            "ja",
+            "nein"
+        ]
+    },
+    {
+        "descr":"Hast du klare Ziele (Schule, Hobbys, Zukunft)?",
+        "options":[
+            "ja sehr",
+            "teilweise",
+            "eher unentschlossen",
+            "ich mache mir keine Gedanken"
+        ]
     }
     
 ]
