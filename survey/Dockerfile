@@ -29,3 +29,5 @@ COPY --from=netcoresdk /app /app
 WORKDIR /app
 
 ENTRYPOINT [ "./survey" ]
+
+EXPOSE 80
