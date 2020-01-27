@@ -6,14 +6,14 @@ import { statusResponse } from "./types";
 function Waiting(props: { status: statusResponse | undefined }): React.Component {
     return <Jumbotron>
         {typeof props.status === "undefined" ? null : <h1>{props.status.curr}/{props.status.all}</h1>}
-        <p> Text, der das warten auf die anderen überbrücken soll</p>
+        <p> Text, der das Warten auf die Anderen überbrücken soll 🙄</p>
         <ProgressBar animated now={typeof props.status === "undefined" ? 0 : props.status?.curr / props.status.all * 100} />
     </Jumbotron>
 }
 
 function Download(): React.Component{
     return <Jumbotron>
-        <h1></h1>
+        <h1>Ergebnisse Fertig</h1>
         <p>
             <Button variant="outline-primary" href="/Api/Result" download="umfrage.csv">Download</Button>
         </p>

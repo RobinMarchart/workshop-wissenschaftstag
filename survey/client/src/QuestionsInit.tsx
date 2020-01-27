@@ -28,7 +28,7 @@ export class QuestionsInit extends React.Component<{initialized: (init: Promise<
                 <Form>
                     <Form.Group>
                         <Form.Label>
-                            Anzahl der Unfage-T6eilnehmer
+                            Anzahl der Unfage-Teilnehmer
                         </Form.Label>
                         <Form.Control type="number" min="1" onChange={(e): void=>this.numPart=e.target.valueAsNumber}>
 
