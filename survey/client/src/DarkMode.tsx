@@ -29,7 +29,7 @@ export default class DarkMode extends React.Component<{}, { enabled: boolean }>{
 
     render() {
         return <div className="darkSwitch">
-            <span>Switch with style inspired by Material Design</span>
+            <span>Dark Mode</span>
             <Switch
                 checked={this.state.enabled}
                 onChange={(x): void=>this.setDarkMode(x)}
