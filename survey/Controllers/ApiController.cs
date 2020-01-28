@@ -36,7 +36,8 @@ namespace survey.Controllers{
         }
 
         public async Task<IActionResult> PreResult(){
-            await Task.WhenAll(GlobalState.globalState.answers.ForEach(x=>x.second.WaitAsync()));
+            await Task.WhenAll(GlobalState.globalState.answers.Select(x=>x.second.WaitAsync()));
+            Func<IEnumerable<String>,String> toLine=x=>x.Aggregate((x,y)=>x+';'+y)+"\n";
             String csv =toLine(new String[] {"Item"}.Concat(Enumerable.Range(1,GlobalState.globalState.questions.Count).Select(x=>x.ToString())));
             csv+=GlobalState.globalState.answers.Where(x=>x.first!=null).Select((x,y)=>new String[]{(y+1).ToString()}.Concat(x.first.Select(x=>x.ToString()))).Select(toLine).Aggregate((x,y)=>x+y);
             GlobalState.globalState.answers.ForEach(x=>x.second.Release());
@@ -83,7 +84,7 @@ namespace survey.Controllers{
             var ids=new List<int>();
             for (int x=0;x<request.participants;x++)ids.Add(GlobalState.globalState.participantsIdCounter.first++);
             GlobalState.globalState.participantsIdCounter.second.Release();
-            Console.Out.WriteLine("Added registered ids: "+ids.Aggregate((x,y)=>x+"; "+y));
+            Console.Out.WriteLine("Added registered ids: "+ids.Select(x=>x.ToString()).Aggregate((x,y)=>x+"; "+y));
             return Json(new RegisterResponse(){ids=ids,questions=GlobalState.globalState.questions});
         }
 
