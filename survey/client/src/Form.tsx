@@ -19,7 +19,7 @@ class FormSelect extends React.Component<{ options: questionOptions }, { unselec
     }
 
     render(): React.Component {
-            <Form.Control as="select"
+            return <Form.Control as="select"
                 onChange={(e): void => this.handleOnChange(e)}
                 ref={this.props.Ref}
                 isInvalid>

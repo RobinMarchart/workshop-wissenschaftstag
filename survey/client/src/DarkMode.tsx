@@ -9,7 +9,7 @@ import {
 
 export default class DarkMode extends React.Component<{}, { enabled: boolean }>{
 
-    setDarkMode(checked: boolean) {
+    setDarkMode(checked: boolean): void {
         window.localStorage.setItem("darkmode", JSON.stringify({ darkmode: checked }));
         this.setState({ enabled: checked });
         if (checked) enableDarkMode();
@@ -27,7 +27,7 @@ export default class DarkMode extends React.Component<{}, { enabled: boolean }>{
         else disableDarkMode();
     }
 
-    render() {
+    render(): React.Component {
         return <div className="darkSwitch">
             <span>Dark Mode</span>
             <Switch
