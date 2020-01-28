@@ -35,6 +35,14 @@ namespace survey.Controllers{
             return Content(await GlobalState.globalState.results,"text/csv");
         }
 
+        public async Task<IActionResult> PreResult(){
+            await Task.WhenAll(GlobalState.globalState.answers.ForEach(x=>x.second.WaitAsync()));
+            String csv =toLine(new String[] {"Item"}.Concat(Enumerable.Range(1,GlobalState.globalState.questions.Count).Select(x=>x.ToString())));
+            csv+=GlobalState.globalState.answers.Where(x=>x.first!=null).Select((x,y)=>new String[]{(y+1).ToString()}.Concat(x.first.Select(x=>x.ToString()))).Select(toLine).Aggregate((x,y)=>x+y);
+            GlobalState.globalState.answers.ForEach(x=>x.second.Release());
+            return Content(csv,"text/csv");
+        }
+
         public async Task<IActionResult> Status(){
             await GlobalState.globalState.initialized.WaitAsync();
             GlobalState.globalState.initialized.Release();
@@ -54,7 +62,7 @@ namespace survey.Controllers{
             }
             user.first=request.answers;
             user.second.Release();
-            
+            Console.Out.WriteLine("Answer from id "+request.id);
             if(finished)GlobalState.globalState.results=Task.Run(GenerateResults);
 
             return Ok();
@@ -75,6 +83,7 @@ namespace survey.Controllers{
             var ids=new List<int>();
             for (int x=0;x<request.participants;x++)ids.Add(GlobalState.globalState.participantsIdCounter.first++);
             GlobalState.globalState.participantsIdCounter.second.Release();
+            Console.Out.WriteLine("Added registered ids: "+ids.Aggregate((x,y)=>x+"; "+y));
             return Json(new RegisterResponse(){ids=ids,questions=GlobalState.globalState.questions});
         }
 

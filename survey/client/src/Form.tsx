@@ -19,17 +19,12 @@ class FormSelect extends React.Component<{ options: questionOptions }, { unselec
     }
 
     render(): React.Component {
-        return this.state.unselected ?
             <Form.Control as="select"
                 onChange={(e): void => this.handleOnChange(e)}
                 ref={this.props.Ref}
                 isInvalid>
                 <option selected disabled key={-1}>Bitte Auswählen ...</option>
                 {this.props.options.map((x, y) => <option value={y.toString()} key={y}>{x}</option>)}
-            </Form.Control> : <Form.Control as="select"
-                onChange={(e): void => this.handleOnChange(e)}
-                ref={this.props.Ref}>
-                {this.props.options.map((x, y) => <option key={y}>{x}</option>)}
             </Form.Control>;
     }
 }
